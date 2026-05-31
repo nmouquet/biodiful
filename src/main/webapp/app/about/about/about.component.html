@@ -120,6 +120,28 @@
     </ul>
   </div>
 
+  <!-- SECTION SURVEYS -->
+
+  <div class="py-3">
+    <h3 jhiTranslate="about.surveys">Campagnes précédentes</h3>
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th jhiTranslate="about.surveys.year">Année</th>
+          <th jhiTranslate="about.surveys.name">Nom</th>
+          <th jhiTranslate="about.surveys.description">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let survey of surveys">
+          <td>{{ survey.year }}</td>
+          <td>{{ survey.name[currentLang()] }}</td>
+          <td>{{ survey.description[currentLang()] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="py-3">
     <h3 jhiTranslate="about.partners">Partners</h3>
     <div class="row">

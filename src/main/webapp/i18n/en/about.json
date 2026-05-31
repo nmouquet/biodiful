@@ -9,6 +9,10 @@
     "researchers": "Associate researchers",
     "website": "Website realization",
     "survey.list": "See the list surveys",
-    "partners": "Partners"
+    "partners": "Partners",
+    "surveys": "Previous surveys",
+    "surveys.year": "Year",
+    "surveys.name": "Name",
+    "surveys.description": " "
   }
 }

@@ -9,6 +9,10 @@
     "researchers": "Investigadores asociados",
     "website": "Realización del sitio web",
     "survey.list": "Ver la lista de las campañas",
-    "partners": "Socios"
+    "partners": "Socios",
+    "surveys": "Campañas anteriores",
+    "surveys.year": "Año",
+    "surveys.name": "Nombre",
+    "surveys.description": " "
   }
 }
