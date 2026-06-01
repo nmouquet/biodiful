@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateDirective } from 'app/shared/language';
 import { SURVEYS, Survey } from './surveys.data';
+import { PARTNERS } from './partners.data';
+import { PUBLICATIONS } from './publications.data';
 
 @Component({
   selector: 'jhi-about',
@@ -15,6 +17,8 @@ import { SURVEYS, Survey } from './surveys.data';
 export default class AboutComponent {
   private translateService = inject(TranslateService);
   surveys = SURVEYS;
+  partners = PARTNERS;
+  publications = PUBLICATIONS; // ← ajouter
 
   currentLang(): 'fr' | 'en' | 'es' {
     const lang = this.translateService.currentLang;

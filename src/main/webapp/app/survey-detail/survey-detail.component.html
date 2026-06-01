@@ -1,0 +1,51 @@
+<div *ngIf="survey; else notFound">
+  <!-- TITRE -->
+  <div class="row justify-content-center">
+    <h1 class="display-4">{{ survey.name[currentLang()] }}</h1>
+  </div>
+
+  <!-- DESCRIPTION + IMAGE -->
+  <div class="mt-4">
+    <img *ngIf="imagePath()" [src]="imagePath()" [alt]="survey.name[currentLang()]" class="survey-image" />
+    <p *ngFor="let para of survey.longDescription[currentLang()]" class="lead">
+      {{ para }}
+    </p>
+  </div>
+
+  <!-- PARTENAIRES -->
+  <div class="mt-4" *ngIf="partners.length > 0">
+    <h4 jhiTranslate="about.partners">Partners</h4>
+    <ul>
+      <li *ngFor="let partner of partners">
+        <a *ngIf="partner.url; else noLink" [href]="partner.url" target="_blank" rel="noopener noreferrer">
+          {{ partner.name }}
+        </a>
+        <ng-template #noLink>{{ partner.name }}</ng-template>
+        <span class="text-muted"> — {{ partner.location }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div class="mt-4" *ngIf="publications.length > 0">
+    <h4 jhiTranslate="about.publications">Publications</h4>
+    <ul>
+      <li class="mb-3" *ngFor="let pub of publications">
+        <a [href]="pub.url" target="_blank">{{ pub.title }}</a>
+        {{ pub.authors }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- RETOUR -->
+  <div class="py-3">
+    <a [routerLink]="['/about']" jhiTranslate="about.survey.list">← Voir la liste des campagnes</a>
+  </div>
+</div>
+
+<!-- SURVEY INTROUVABLE -->
+<ng-template #notFound>
+  <div class="row justify-content-center mt-4">
+    <p jhiTranslate="error.http.404">Survey not found.</p>
+  </div>
+</ng-template>

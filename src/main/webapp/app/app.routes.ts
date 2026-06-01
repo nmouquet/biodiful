@@ -64,6 +64,11 @@ const routes: Routes = [
     title: 'error.title',
   },
   {
+    path: 'survey-detail/:slug',
+    loadComponent: () => import('./survey-detail/survey-detail.component'),
+    title: 'home.title',
+  },
+  {
     path: ':friendlyUrl',
     loadComponent: () => import('app/survey/survey-presentation/survey-presentation.component').then(m => m.SurveyPresentationComponent),
     resolve: {
