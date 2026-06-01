@@ -4,9 +4,9 @@
     <h1 class="display-4">{{ survey.name[currentLang()] }}</h1>
   </div>
 
-  <!-- DESCRIPTION + IMAGE -->
   <div class="mt-4">
     <img *ngIf="imagePath()" [src]="imagePath()" [alt]="survey.name[currentLang()]" class="survey-image" />
+    <small *ngIf="survey.imageCredit" class="image-credit">{{ survey.imageCredit }}</small>
     <p *ngFor="let para of survey.longDescription[currentLang()]" class="lead">
       {{ para }}
     </p>
@@ -31,7 +31,8 @@
     <h4 jhiTranslate="about.publications">Publications</h4>
     <ul>
       <li class="mb-3" *ngFor="let pub of publications">
-        <a [href]="pub.url" target="_blank">{{ pub.title }}</a>
+        <a *ngIf="pub.url; else noUrl" [href]="pub.url" target="_blank">{{ pub.title }}</a>
+        <ng-template #noUrl>{{ pub.title }}</ng-template>
         {{ pub.authors }}
       </li>
     </ul>

@@ -21,15 +21,6 @@
     été développée par des chercheurs du CNRS et de l’IRD. La plateforme est ouverte à l’ensemble de la communauté scientifique. Toute
     personne souhaitant créer une enquête sur les interactions entre humains et nature peut nous contacter.\n
   </p>
-  <div>
-    <h3 jhiTranslate="about.publications">Liste de publications récentes</h3>
-    <ul>
-      <li class="mb-3" *ngFor="let pub of publications">
-        <a [href]="pub.url" target="_blank">{{ pub.title }}</a>
-        {{ pub.authors }}
-      </li>
-    </ul>
-  </div>
 
   <!-- SECTION SURVEYS -->
 
@@ -52,6 +43,21 @@
       </tbody>
     </table>
   </div>
+
+  <!-- SECTION PUBLICATIONS -->
+
+  <div>
+    <h3 jhiTranslate="about.publications">Liste de publications récentes</h3>
+    <ul>
+      <li class="mb-3" *ngFor="let pub of publications">
+        <a *ngIf="pub.url; else noUrl" [href]="pub.url" target="_blank">{{ pub.title }}</a>
+        <ng-template #noUrl>{{ pub.title }}</ng-template>
+        {{ pub.authors }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- SECTION PARTNERS -->
 
   <div class="py-3">
     <h3 jhiTranslate="about.partners">Partners</h3>

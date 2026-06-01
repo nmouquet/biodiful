@@ -16,11 +16,25 @@
 export interface Publication {
   slug: string; // identifiant unique court (auteur-année)
   title: string;
-  url: string;
+  url?: string;
   authors: string; // auteurs + année + journal + doi en une seule string
 }
 
 export const PUBLICATIONS: Publication[] = [
+  // ── in prep, submitted ──────────────────────────────────────────────────────────────────
+  {
+    slug: 'birre-inprep',
+    title: 'Aesthetic values of orchids, geography, ecological traits and public experience of nature: implications for conservation.',
+    url: '',
+    authors: 'Birre D., Mouquet N., Geniez P., Casajus N. & Schatz B. (in prep)',
+  },
+  {
+    slug: 'cirino-rev',
+    title: 'Bridging perception and landscape structure: mapping urban streetscape aesthetics as nature’s contributions to people.',
+    url: '',
+    authors: 'Cirino D.B., Mouquet N. & Metzger J.P. (in revision).',
+  },
+
   // ── 2025 ──────────────────────────────────────────────────────────────────
   {
     slug: 'mclean-2025',
@@ -34,7 +48,7 @@ export const PUBLICATIONS: Publication[] = [
     title: 'Benthic communities on restored coral reefs confer equivalent aesthetic value to healthy reefs.',
     url: 'https://nicolasmouquet.fr/pages/Alisa_et_al_2025_SciRep.html',
     authors:
-      'Alisa C.A.G., Razak T.B., Mouquet N.*, Graham A.J, Hemingson C.R., Mouillot D., Damayanti L., Prasetya M.E., Maulana P.B., Hamka A., Dwiyanto A., Abeng A.T., Madjid, Irwan R.E., Hidayat A., Lakota H., Parrangan C.V., Pratama A.M.A., Hamzah, Suandar, Subhan B., Zamani N.P., Vida R.T. & Lamont T.A.C. (2025). Scientific Reports 15, 20790. doi.org/10.1038/s41598-025-06373-3',
+      'Alisa C.A.G., Razak T.B., Mouquet N., Graham A.J, Hemingson C.R., Mouillot D., Damayanti L., Prasetya M.E., Maulana P.B., Hamka A., Dwiyanto A., Abeng A.T., Madjid, Irwan R.E., Hidayat A., Lakota H., Parrangan C.V., Pratama A.M.A., Hamzah, Suandar, Subhan B., Zamani N.P., Vida R.T. & Lamont T.A.C. (2025). Scientific Reports 15, 20790. doi.org/10.1038/s41598-025-06373-3',
   },
   {
     slug: 'casoli-2025',
@@ -108,6 +122,12 @@ export const PUBLICATIONS: Publication[] = [
     url: 'https://nicolasmouquet.fr/pages/Tribot_et_al_2019_BioLett.html',
     authors:
       'Tribot A.S., Deter J., Claverie T., Guilhaumon F., Villeger S., & Mouquet N. (2019). Biology letters, 15, 20190703, doi:10.1098/rsbl.2019.0703',
+  },
+  {
+    slug: 'nourdin-counat-2019',
+    title: 'La gestion des jardins est-elle verrouillée par l’esthétisme ?',
+    url: 'https://nicolasmouquet.fr/files/Nourdin_et_al_2019_CN318_Actu.pdf',
+    authors: 'Nourdin M., Houte S., Mouquet N. & Bonnet B. (2019). Le Courrier de la Nature, 318.',
   },
 
   // ── 2018 ──────────────────────────────────────────────────────────────────

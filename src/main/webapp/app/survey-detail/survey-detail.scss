@@ -1,8 +1,24 @@
-.survey-image {
+.survey-image-wrapper {
   float: right;
   width: 40%;
+  margin: 0 0 1rem 2rem;
+}
+
+.survey-image {
+  float: right;
+  width: 35%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 8px;
   margin: 0 0 1rem 2rem;
+}
+
+.image-credit {
+  float: right;
+  clear: right;
+  width: 35%;
+  text-align: right;
+  color: #888;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
 }
