@@ -23,6 +23,7 @@ export default class SurveyDetailComponent implements OnInit {
   publications: Publication[] = [];
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     const slug = this.route.snapshot.paramMap.get('slug');
     this.survey = SURVEYS.find(s => s.slug === slug);
 
