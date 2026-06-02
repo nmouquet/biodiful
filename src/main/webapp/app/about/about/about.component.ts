@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,11 +14,16 @@ import { PUBLICATIONS } from './publications.data';
   standalone: true,
   imports: [CommonModule, TranslateDirective, RouterModule],
 })
-export default class AboutComponent {
+export default class AboutComponent implements OnInit {
   private translateService = inject(TranslateService);
   surveys = SURVEYS;
   partners = PARTNERS;
-  publications = PUBLICATIONS; // ← ajouter
+  publications = PUBLICATIONS;
+
+  ngOnInit(): void {
+    // ← ajouter ce bloc
+    window.scrollTo(0, 0);
+  }
 
   currentLang(): 'fr' | 'en' | 'es' {
     const lang = this.translateService.currentLang;
