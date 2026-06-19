@@ -50,7 +50,7 @@ export interface Survey {
 
 export const SURVEYS: Survey[] = [
   // ── 2026 ──────────────────────────────────────────────────────────────────
-  /*
+
   {
     slug: 'dans-la-foret',
     year: 2026,
@@ -60,25 +60,31 @@ export const SURVEYS: Survey[] = [
       en: 'European forests',
       es: 'Bosques europeos',
     },
-    image: 'survey-image.jpg',
+    image: 'forests.jpg',
     imageCredit: '',
     longDescription: {
       fr: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        'Les forêts européennes sont soumises à des pressions climatiques et anthropiques croissantes. Les décisions de gestion qui en découlent modifient la structure et la composition des peuplements forestiers, ce qui peut influencer la façon dont ces paysages sont perçus par le grand public.',
+        'Cette campagne a mobilisé plus de 12 000 participants à travers une enquête en ligne disponible en français, anglais et espagnol. Pour chaque paire de photographies de forêts européennes, les participants devaient indiquer laquelle ils trouvaient la plus belle, la plus apaisante, ou celle qui devrait être protégée en priorité.',
+        "Les photographies ont été sélectionnées et caractérisées selon leur composition (feuillus, conifères, mixtes), leur structure et la présence de sous-bois. Des informations socio-culturelles et psychologiques (connexion à la nature, connaissances forestières, biophobie) ont également été recueillies afin d'explorer comment le profil des participants module leurs perceptions.",
+        "Les analyses portent sur trois dimensions — esthétique, pouvoir restauratif et envie de protection — et leurs relations avec les caractéristiques écologiques des forêts et les profils individuels des répondants. Ce travail vise à mieux intégrer les dimensions perceptives et socio-culturelles dans les stratégies de gestion forestière. Il a fait l'objet d'un Master 2 de Lùla Marcet et nous sommes actuellement en train d'analyser les résultats en vue de plusieurs publications.",
       ],
       en: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        'European forests face increasing climate and human pressures. Management decisions aimed at enhancing forest resilience alter stand structure and composition — changes that may also shape how these landscapes are perceived by the general public.',
+        'This survey engaged more than 12,000 participants through an online questionnaire available in French, English and Spanish. For each pair of photographs of European forests, participants were asked to choose which they found more beautiful, more restorative, or most deserving of protection.',
+        'Photographs were selected and described according to their species composition (deciduous, coniferous, mixed), structural regularity, and understory presence. Socio-cultural and psychological variables — including human–nature connectedness, forest knowledge, and biophobia — were also collected to explore how individual profiles shape perceptions.',
+        "Analyses focus on three dimensions — aesthetics, restorative capacity, and willingness to protect — and their relationships with forest ecological characteristics and respondent profiles. This work aims to better integrate perceptual and socio-cultural dimensions into forest management strategies. It formed the basis of a Master's thesis by Lùla Marcet, and we are currently analysing the results with a view to several publications.",
       ],
       es: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        'Los bosques europeos están sometidos a presiones climáticas y humanas crecientes. Las decisiones de gestión destinadas a reforzar su resiliencia modifican la estructura y composición de las masas forestales, cambios que también pueden influir en cómo estos paisajes son percibidos por el público en general.',
+        'Esta campaña involucró a más de 12.000 participantes a través de una encuesta en línea disponible en francés, inglés y español. Para cada par de fotografías de bosques europeos, los participantes debían indicar cuál encontraban más bella, más reparadora o cuál debería protegerse con prioridad.',
+        'Las fotografías fueron seleccionadas y caracterizadas según su composición específica (frondosas, coníferas, mixtas), su estructura y la presencia de sotobosque. También se recogieron variables socioculturales y psicológicas — conexión con la naturaleza, conocimientos forestales, biofobia — para explorar cómo el perfil de los participantes modula sus percepciones.',
+        'Los análisis se centran en tres dimensiones — estética, poder restaurador y deseo de protección — y sus relaciones con las características ecológicas de los bosques y los perfiles individuales de los encuestados. Este trabajo busca integrar mejor las dimensiones perceptivas y socioculturales en las estrategias de gestión forestal. Ha sido el objeto de un Máster 2 de Lùla Marcet y actualmente estamos analizando los resultados con vistas a varias publicaciones.',
       ],
     },
-    partners: ['MARBEC', 'CEFE', 'WSL'], // codes exacts du champ 'code' dans partners.data.ts
-    publications: ['tribot-scirep-2016', 'langlois-2021'], // slugs exacts du champ 'slug' dans publications.data.ts
-  },*/
+    partners: ['MARBEC', 'CEFE', 'SETE'], // codes exacts du champ 'code' dans partners.data.ts
+    publications: [], // slugs exacts du champ 'slug' dans publications.data.ts
+  },
 
   // ── 2025 ──────────────────────────────────────────────────────────────────
   {
