@@ -15,12 +15,12 @@ import { PUBLICATIONS, Publication } from '../about/about/publications.data';
   imports: [CommonModule, TranslateDirective, RouterModule],
 })
 export default class SurveyDetailComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  private translateService = inject(TranslateService);
-
   survey: Survey | undefined;
   partners: Partner[] = [];
   publications: Publication[] = [];
+
+  private route = inject(ActivatedRoute);
+  private translateService = inject(TranslateService);
 
   ngOnInit(): void {
     window.scrollTo(0, 0);

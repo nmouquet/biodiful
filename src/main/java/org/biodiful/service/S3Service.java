@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
-import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 import software.amazon.awssdk.services.s3.model.S3Exception;
 import software.amazon.awssdk.services.s3.model.S3Object;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
@@ -72,11 +71,11 @@ public class S3Service {
                 .prefix(folderInfo.prefix)
                 .build();
 
-            // Execute the request
-            ListObjectsV2Response listResponse = s3Client.listObjectsV2(listRequest);
-
-            // Filter for media files and collect their keys
-            List<String> mediaKeys = listResponse
+            // Execute the request using the paginator so we retrieve *all* objects.
+            // ListObjectsV2 returns at most 1000 keys per response; the paginator
+            // transparently follows the continuation token to fetch every page.
+            List<String> mediaKeys = s3Client
+                .listObjectsV2Paginator(listRequest)
                 .contents()
                 .stream()
                 .map(S3Object::key)
