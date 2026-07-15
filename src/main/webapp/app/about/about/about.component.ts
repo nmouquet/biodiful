@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateDirective } from 'app/shared/language';
-import { SURVEYS, Survey } from './surveys.data';
+import { SURVEYS } from './surveys.data';
 import { PARTNERS } from './partners.data';
 import { PUBLICATIONS } from './publications.data';
 
@@ -15,10 +15,10 @@ import { PUBLICATIONS } from './publications.data';
   imports: [CommonModule, TranslateDirective, RouterModule],
 })
 export default class AboutComponent implements OnInit {
-  private translateService = inject(TranslateService);
   surveys = SURVEYS;
   partners = PARTNERS;
   publications = PUBLICATIONS;
+  private translateService = inject(TranslateService);
 
   ngOnInit(): void {
     // ← ajouter ce bloc
