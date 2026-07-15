@@ -8,6 +8,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +23,7 @@ import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 import software.amazon.awssdk.services.s3.model.S3Exception;
 import software.amazon.awssdk.services.s3.model.S3Object;
+import software.amazon.awssdk.services.s3.paginators.ListObjectsV2Iterable;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequest;
@@ -40,6 +42,13 @@ class S3ServiceTest {
     @BeforeEach
     void setUp() throws Exception {
         s3Service = new S3Service(s3Client, s3Presigner);
+
+        // The service uses listObjectsV2Paginator, which returns a ListObjectsV2Iterable.
+        // We return a real iterable backed by the mock client, so the paginator drives the
+        // (mocked) listObjectsV2 calls and the actual continuation-token logic is exercised.
+        lenient()
+            .when(s3Client.listObjectsV2Paginator(any(ListObjectsV2Request.class)))
+            .thenAnswer(invocation -> new ListObjectsV2Iterable(s3Client, invocation.getArgument(0)));
 
         // Setup default presigner behavior to return presigned URLs (lenient for tests that don't need it)
         lenient()
@@ -124,6 +133,44 @@ class S3ServiceTest {
 
         // Then
         assertThat(imageUrls).isEmpty();
+    }
+
+    @Test
+    void shouldRetrieveAllFilesAcrossMultiplePages() {
+        // Given a folder with more than 1000 files, S3 returns them across several
+        // truncated pages. The paginator must follow the continuation token(s) so that
+        // every file is retrieved, not just the first page of 1000.
+        String folderUrl = "https://test-bucket.s3.fr-par.scw.cloud/big-folder/";
+
+        // Page 1: 1000 objects, truncated with a continuation token pointing to page 2
+        List<S3Object> page1Objects = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            page1Objects.add(S3Object.builder().key("big-folder/image" + i + ".jpg").build());
+        }
+        ListObjectsV2Response page1 = ListObjectsV2Response.builder()
+            .contents(page1Objects)
+            .isTruncated(true)
+            .nextContinuationToken("token-page-2")
+            .build();
+
+        // Page 2: remaining 500 objects, not truncated (last page)
+        List<S3Object> page2Objects = new ArrayList<>();
+        for (int i = 1000; i < 1500; i++) {
+            page2Objects.add(S3Object.builder().key("big-folder/image" + i + ".jpg").build());
+        }
+        ListObjectsV2Response page2 = ListObjectsV2Response.builder().contents(page2Objects).isTruncated(false).build();
+
+        // Return page 1 for the initial request (no token), page 2 once the token is supplied
+        when(s3Client.listObjectsV2(any(ListObjectsV2Request.class))).thenAnswer(invocation -> {
+            ListObjectsV2Request request = invocation.getArgument(0);
+            return request.continuationToken() == null ? page1 : page2;
+        });
+
+        // When
+        List<String> mediaUrls = s3Service.listMediaFiles(folderUrl);
+
+        // Then all 1500 files are retrieved, not just the first 1000
+        assertThat(mediaUrls).hasSize(1500);
     }
 
     @Test
